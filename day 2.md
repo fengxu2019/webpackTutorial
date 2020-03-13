@@ -34,24 +34,25 @@ import Test1 from 'Utils'; // 精确匹配，所以 path/to/index.js 被解析�
 import Test2 from 'Utils/index.js'; // 非精确匹配，触发普通解析
 ```
 下面的表格展示了一些其他情况：
-别名 | import 'xyz' | import 'xyz/file.js'
-----|------|--------
-{}|/abc/node_modules/xyz/index.js|/abc/node_modules/xyz/file.js
-{ xyz: '/abs/path/to/file.js' }|/abs/path/to/file.js|error
-{ xyz$: '/abs/path/to/file.js' }|/abs/path/to/file.js|/abc/node_modules/xyz/file.js
-{ xyz: './dir/file.js' }|/abc/dir/file.js|error
-{ xyz$: './dir/file.js' }|/abc/dir/file.js|/abc/node_modules/xyz/file.js
-{ xyz: '/some/dir' }|/some/dir/index.js|/some/dir/file.js
-{ xyz$: '/some/dir' }|/some/dir/index.js|/abc/node_moduels/xyz/file.js
-{ xyz: './dir' }|/abc/dir/index.js|/abc/dir/file.js
-{ xyz$: './dir' }|/abc/dir/index.js|/abc/node_modules/xyz/file.js
-{ xyz: 'modu' }|/abc/node_modules/modu/index.js|/abc/node_modules/modu/file.js
-{ xyz$: 'modu' }|/abc/node_modules/modu/index.js|/abc/node_modules/xyz/file.js
-{ xyz: 'modu/some/file.js' }|/abc/node_modules/modu/some/file.js|error
-{ xyz$: 'modu/some/file.js' }|/abc/node_modules/modu/some/file.js|/abc/node_modules/xyz/file.js
-{ xyz: 'modu/dir' }|/abc/node_modules/modu/dir/index.js|/abc/node_modules/modu/dir/file.js
-{ xyz: 'xyz/dir' }|/abc/node_modules/xyz/dir/index.js|/abc/node_modules/xyz/dir/file.js
-{ xyz$: 'xyz/dir' }|/abc/node_modules/xyz/dir/index.js|/abc/node_modules/xyz/file.js
+
+|别名 | import 'xyz' | import 'xyz/file.js'|
+|----|------|--------
+|{}|/abc/node_modules/xyz/index.js|/abc/node_modules/xyz/file.js
+|{ xyz: '/abs/path/to/file.js' }|/abs/path/to/file.js|error
+|{ xyz$: '/abs/path/to/file.js' }|/abs/path/to/file.js|/abc/node_modules/xyz/file.js
+|{ xyz: './dir/file.js' }|/abc/dir/file.js|error
+|{ xyz$: './dir/file.js' }|/abc/dir/file.js|/abc/node_modules/xyz/file.js
+|{ xyz: '/some/dir' }|/some/dir/index.js|/some/dir/file.js
+|{ xyz$: '/some/dir' }|/some/dir/index.js|/abc/node_moduels/xyz/file.js
+|{ xyz: './dir' }|/abc/dir/index.js|/abc/dir/file.js
+|{ xyz$: './dir' }|/abc/dir/index.js|/abc/node_modules/xyz/file.js
+|{ xyz: 'modu' }|/abc/node_modules/modu/index.js|/abc/node_modules/modu/file.js
+|{ xyz$: 'modu' }|/abc/node_modules/modu/index.js|/abc/node_modules/xyz/file.js
+|{ xyz: 'modu/some/file.js' }|/abc/node_modules/modu/some/file.js|error
+|{ xyz$: 'modu/some/file.js' }|/abc/node_modules/modu/some/file.js|/abc/node_modules/xyz/file.js
+|{ xyz: 'modu/dir' }|/abc/node_modules/modu/dir/index.js|/abc/node_modules/modu/dir/file.js
+|{ xyz: 'xyz/dir' }|/abc/node_modules/xyz/dir/index.js|/abc/node_modules/xyz/dir/file.js
+|{ xyz$: 'xyz/dir' }|/abc/node_modules/xyz/dir/index.js|/abc/node_modules/xyz/file.js
 
 ***如果在 package.json 中定义，index.js 可能会被解析为另一个文件。***
 
