@@ -1,5 +1,5 @@
 {
-  "name": "webpackTutorial",
+  "name": "webpacktutorial",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,8 +18,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "build": "webpack --mode production --config ./config/webpack.config.js",
+    "dev": "webpack --mode development --config ./config/webpack.config.js"
   },
   "repository": {
     "type": "git",
