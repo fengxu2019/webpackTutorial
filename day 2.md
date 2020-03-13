@@ -35,7 +35,7 @@ import Test2 from 'Utils/index.js'; // 非精确匹配，触发普通解析
 ```
 下面的表格展示了一些其他情况：
 别名 | import 'xyz' | import 'xyz/file.js'
--|-|-
+----|------|--------
 {}|/abc/node_modules/xyz/index.js|/abc/node_modules/xyz/file.js
 { xyz: '/abs/path/to/file.js' }|/abs/path/to/file.js|error
 { xyz$: '/abs/path/to/file.js' }|/abs/path/to/file.js|/abc/node_modules/xyz/file.js
